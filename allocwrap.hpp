@@ -48,15 +48,15 @@
  *     [C++11 only]
  *     Some container type already has a lot of template arguments and
  *     the allocator argument is unfortunatelly placed at the least.
- *     It may result in boilerplate code whereever you want to declare
+ *     It may result in boilerplate code wherever you want to declare
  *     a container type using your allocator.
  *     For such case a template alias can give us a great help:
  *
- *     before:
+ *     Without C++11 template alias:
  *         std::map<int, std::string, std::less<int>, MyStlAllocator< std::pair<const int, std::string> > > mymap1;
  *         std::map<int, float, std::less<int>, MyStlAllocator< std::pair<const int, float> > > mymap2;
  *
- *     after:
+ *     With C++11 template alias:
  *         template < typename K, typename V >
  *           using MyMap = std::map<K,V,std::less<K>, MyStlAllocator< std::pair<const K, V> > >;
  *         MyMap<int, std::string> mymap1;
